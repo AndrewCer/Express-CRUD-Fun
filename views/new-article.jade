@@ -2,31 +2,65 @@ extends layout
 
 block content
   div.main-content
-    h2 New Article
-    form(action='/new-article', method='POST')
-      if errorArray
-        div.errors
-          p(style='color: black; font-weight: bold;') Please correct the errors below
-          ul(style='padding-left: 20px;')
-            for error in errorArray
-              li= error
-      div.labels
-        label(for='title') Title
-        label(for='background-url') Background URL
-      div.input-fields
-        input#title(type='text', name='title', autofocus, value= oldTitle)
-        input#background-url(type='text', name='backgroundUrl', value= oldUrl)
-        if oldCheck
-          input#checkbox(type='checkbox', name='hasDarkColors', checked)
-        else
-          input#checkbox(type='checkbox', name='hasDarkColors')
-        label#check-label(for='checkbox') Background image has dark colors
-      div.bottom-labels
-        div.bottom-label-one
-          label(for='excerpt') Excerpt
-        div.bottom-label-two
-          label(for='body-text') Body
-      div.input-fields
-        textarea#excerpt(name='excerpt')= oldExcerpt
-        textarea#body-text(name='bodyText')= oldBody
-        input#button(type='submit', value='Add Article')
+    if edit
+      h2 Edit Article
+    else
+      h2 New Article
+    if edit
+      form(action='/article/' + artId + '/edit', method='POST')
+        if errorArray
+          div.errors
+            p(style='color: black; font-weight: bold;') Please correct the errors below
+            ul(style='padding-left: 20px;')
+              for error in errorArray
+                li= error
+        div.labels
+          label(for='title') Title
+          label(for='background-url') Background URL
+        div.input-fields
+          input#title(type='text', name='title', autofocus, value= oldTitle)
+          input#background-url(type='text', name='backgroundUrl', value= oldUrl)
+          if oldCheck
+            input#checkbox(type='checkbox', name='hasDarkColors', checked)
+          else
+            input#checkbox(type='checkbox', name='hasDarkColors')
+          label#check-label(for='checkbox') Background image has dark colors
+        div.bottom-labels
+          div.bottom-label-one
+            label(for='excerpt') Excerpt
+          div.bottom-label-two
+            label(for='body-text') Body
+        div.input-fields
+          textarea#excerpt(name='excerpt')= oldExcerpt
+          textarea#body-text(name='bodyText')= oldBody
+          input#button(type='submit', value='Edit Article')
+          div#delete
+            a(href='/article/' + artId + '/delete', style='color: white') Delete
+    else
+      form(action='/new-article', method='POST')
+        if errorArray
+          div.errors
+            p(style='color: black; font-weight: bold;') Please correct the errors below
+            ul(style='padding-left: 20px;')
+              for error in errorArray
+                li= error
+        div.labels
+          label(for='title') Title
+          label(for='background-url') Background URL
+        div.input-fields
+          input#title(type='text', name='title', autofocus, value= oldTitle)
+          input#background-url(type='text', name='backgroundUrl', value= oldUrl)
+          if oldCheck
+            input#checkbox(type='checkbox', name='hasDarkColors', checked)
+          else
+            input#checkbox(type='checkbox', name='hasDarkColors')
+          label#check-label(for='checkbox') Background image has dark colors
+        div.bottom-labels
+          div.bottom-label-one
+            label(for='excerpt') Excerpt
+          div.bottom-label-two
+            label(for='body-text') Body
+        div.input-fields
+          textarea#excerpt(name='excerpt')= oldExcerpt
+          textarea#body-text(name='bodyText')= oldBody
+          input#button(type='submit', value='Add Article')

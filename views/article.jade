@@ -7,15 +7,15 @@ block content
         if article.hasDarkColors
           h3(style='color: white; display: inline-block')= article.title
           h3(style='display: inline-block; float: right')
-            a(href='#', style='color: white;') Edit
+            a(href='/article/' + article._id + '/edit', style='color: white;') Edit
         else 
           h3(style='display: inline-block')= article.title
           h3(style='display: inline-block; float: right')
-            a(href='#', style='color: black') Edit
+            a(href='/article/' + article._id + '/edit', style='color: black') Edit
     else
       div.head(style='background-image: url("/images/concrete_seamless.png")')
         h3(style='display: inline-block')= article.title
         h3(style='display: inline-block; float: right')
-          a(href='#', style='color: black') Edit
+          a(href='/article/' + article._id + '/edit', style='color: black') Edit
     div.content
       p= article.bodyText
