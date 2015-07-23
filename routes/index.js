@@ -53,6 +53,7 @@ router.post('/article/:id/edit', function (req, res) {
     oldBody: formData.bodyText, oldUrl: formData.backgroundUrl, oldCheck: formData.hasDarkColors, edit: true});
   }
   else {
+    console.log(formData.backgroundUrl);
     articles.update({_id: req.params.id}, {title: formData.title, backgroundUrl: formData.backgroundUrl,
     hasDarkColors: formData.hasDarkColors, excerpt: formData.excerpt, bodyText: formData.bodyText}, function (err, data) {
       res.redirect('/articles');
