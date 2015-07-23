@@ -63,7 +63,6 @@ router.post('/article/:id/edit', function (req, res) {
 router.get('/article/:id/delete', function (req, res) {
   articles.remove({_id: req.params.id}, function (err, data) {
     if (err) {
-      console.log(err);
       res.render('new-article', {artId: data._id, oldTitle: data.title, oldExcerpt: data.excerpt,
       oldBody: data.bodyText, oldUrl: data.backgroundUrl, oldCheck: data.hasDarkColors, edit: true});
     }
