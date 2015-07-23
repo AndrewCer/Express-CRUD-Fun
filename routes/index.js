@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var db = require('monk')('localhost/zine-db');
+var db = require('monk')(process.env.MONGO_URI);
 var articles = db.get('articles');
 var inputCheck = require('../lib/validation');
 
