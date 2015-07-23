@@ -14,7 +14,7 @@ router.get('/new-article', function (req, res) {
 
 router.get('/articles', function (req, res) {
   articles.find({}, function (err, data) {
-    console.log(data.reverse());
+    data.reverse();
     res.render('articles', {allArticles: data});
   });
 });
@@ -30,6 +30,12 @@ router.post('/new-article', function (req, res) {
     articles.insert(formData);
     res.redirect('/articles');
   }
+});
+
+router.get('/article/:id', function (req, res) {
+  articles.findOne({_id: req.params.id}, function (err, data) {
+    res.render('article', {article: data});
+  });
 });
 
 

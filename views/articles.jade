@@ -6,11 +6,14 @@ block content
       if article.backgroundUrl
         div.head(style='background-image: url("#{article.backgroundUrl}")')
           if article.hasDarkColors
-            h3(style='color:white')= article.title
+            h3
+              a(href='/article/' + article._id, style='color:white;')= article.title
           else 
-            h3= article.title
+            h3
+              a(href='/article/' + article._id, style='color: black')= article.title
       else
         div.head(style='background-image: url("/images/concrete_seamless.png")')
-          h3= article.title
+          h3
+            a(href='/article/' + article._id, style='color: black')= article.title
       div.content
         p= article.excerpt

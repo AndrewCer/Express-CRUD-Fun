@@ -51,6 +51,7 @@ body {
 
 a {
   color: #00B7FF;
+	text-decoration: none;
 }
 
 h1, h2 {
@@ -176,6 +177,12 @@ h2 {
 	max-height: 170px;
 	min-height: 170px;
 	overflow: hidden;
+}
+
+.show-row {
+	width: 100%;
+	background-color: white;
+	margin-top: 20px;
 }
 
 .head {
