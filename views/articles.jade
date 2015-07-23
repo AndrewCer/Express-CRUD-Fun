@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  for article in allArticles
+    div.row
+      if article.backgroundUrl
+        div.head(style='background-image: url("#{article.backgroundUrl}")')
+          if article.hasDarkColors
+            h3(style='color:white')= article.title
+          else 
+            h3= article.title
+      else
+        div.head(style='background-image: url("/images/concrete_seamless.png")')
+          h3= article.title
+      div.content
+        p= article.excerpt

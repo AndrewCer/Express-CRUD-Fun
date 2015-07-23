@@ -12,6 +12,13 @@ router.get('/new-article', function (req, res) {
   res.render('new-article');
 });
 
+router.get('/articles', function (req, res) {
+  articles.find({}, function (err, data) {
+    console.log(data.reverse());
+    res.render('articles', {allArticles: data});
+  });
+});
+
 router.post('/new-article', function (req, res) {
   var formData = req.body
   var returnArray = inputCheck(formData)
@@ -21,8 +28,9 @@ router.post('/new-article', function (req, res) {
   }
   else {
     articles.insert(formData);
-    res.redirect('/');
+    res.redirect('/articles');
   }
 });
+
 
 module.exports = router;
