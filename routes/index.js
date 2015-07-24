@@ -5,7 +5,7 @@ var articles = db.get('articles');
 var inputCheck = require('../lib/validation');
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'The Zine' });
+  res.redirect('/articles');
 });
 
 router.get('/new-article', function (req, res) {
